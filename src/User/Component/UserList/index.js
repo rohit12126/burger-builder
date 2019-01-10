@@ -1,14 +1,13 @@
 import React from 'react';
 
 const UserList = (props) => {
-      return props.users.map((user, index) => {
+      return props.posts.map((post, index) => {
         return <tr key={index} >
                 <td>{index+1}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.age}</td>
-                <td><button onClick={(e) => props.deleteUser(index)}>Delete</button>
-                {/* <button onClick={(e) => props.viewUser(index)}>View</button> */}
+                <td>{post.title}</td>
+                <td>{post.body}</td>
+                <td><button onClick={(e) => props.deleteUser(post.id)}>Delete</button>
+                <button onClick={(e) => props.viewUser(post.id)}>View</button>
                 </td>
         
         </tr>
