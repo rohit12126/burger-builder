@@ -4,10 +4,12 @@ import './Burger.css';
 
 const Burger=(props)=>{
     let burgerFilling = Object.keys(props.ingredients).map(ingKey =>
-            (<BurgerIngredient key={ingKey} type={ingKey} />)
+        ([...Array(props.ingredients[ingKey])]).map((_, index) =>
+            (<BurgerIngredient key={ingKey + index} type={ingKey} />)
         )
+    ).reduce((preVal, curVal) => [...preVal, ...curVal], []);
     console.log(burgerFilling);
-    if(burgerFilling.length>0)
+    if(!burgerFilling.length>0)
         burgerFilling=<h4>Please start adding the filling</h4>
     return (
         <div className='Burger'>
